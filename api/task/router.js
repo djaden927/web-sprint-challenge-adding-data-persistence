@@ -11,23 +11,23 @@ router.get('/', (req, res, next) => {
     Task.getTasks()
         .then(tasks => {
             tasks.forEach(task => {
-                if(task.task_completed === 0){
+                if (task.task_completed === 0) {
                     task.task_completed = false
-                } else if(task.task_completed === 1){
+                } else if (task.task_completed === 1) {
                     task.task_completed = true
                 }
             })
             res.status(200).json(tasks)
         })
-    .catch(next)
+        .catch(next)
 })
 
 router.post('/', validatePost, (req, res, next) => {
     Task.create(req.body)
         .then(newtask => {
-            if(newtask.task_completed === 0){
+            if (newtask.task_completed === 0) {
                 newtask.task_completed = false
-            } else{
+            } else {
                 newtask.task_completed = true
             }
             res.status(201).json(newtask)

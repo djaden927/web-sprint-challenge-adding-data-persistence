@@ -11,23 +11,23 @@ router.get('/', (req, res, next) => {
     Project.getProject()
         .then(projects => {
             projects.forEach(project => {
-                if(project.project_completed === 0){
+                if (project.project_completed === 0) {
                     project.project_completed = false
-                } else if(project.project_completed === 1){
+                } else if (project.project_completed === 1) {
                     project.project_completed = true
                 }
             })
             res.status(200).json(projects)
         })
-    .catch(next)
+        .catch(next)
 })
 
 router.post('/', validatePost, (req, res, next) => {
     Project.create(req.body)
         .then(newProject => {
-            if(newProject.project_completed === 0){
+            if (newProject.project_completed === 0) {
                 newProject.project_completed = false
-            } else{
+            } else {
                 newProject.project_completed = true
             }
             res.status(201).json(newProject)

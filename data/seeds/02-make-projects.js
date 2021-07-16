@@ -1,11 +1,11 @@
 const project = [
-    {project_name: "big project name", project_description: "big project desc", project_completed: 0},
-    {project_name: "big project name2", project_description: "big project desc2", project_completed: 1}
+    { project_name: "big project name", project_description: "big project desc", project_completed: 0 },
+    { project_name: "big project name2", project_description: "big project desc2", project_completed: 1 }
 ]
 
 const resource = [
-    {resource_name: "resource name", resource_description: "resource description"},
-    {resource_name: "resource name2", resource_description: "resource description2"}
+    { resource_name: "resource name", resource_description: "resource description" },
+    { resource_name: "resource name2", resource_description: "resource description2" }
 ]
 
 const task = [
@@ -27,5 +27,5 @@ exports.seed = async function (knex) {
     await knex('projects').insert(project)
     await knex('resources').insert(resource)
     await knex('tasks').insert(task)
-    
+
 }
